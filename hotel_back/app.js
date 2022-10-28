@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 //ruta database
 var database = require("./config/database");
+var auth = require("./auth/main_auth");
 
 
 
@@ -13,13 +14,15 @@ var app = express();
 var usuariosRouter = require('./routes/usuarios.router')
 var habitacionesRouter =require('./routes/habitaciones.router')
 
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(auth); 
 
-//Mongo Connection
+//Mongo Connection 
 database.mongoConnect();
 
 

@@ -1,6 +1,8 @@
 const Usuario = require("../models/usuarios.model")
+const crypto = require("crypto") 
+const jwt = require("jsonwebtoken")
 
-//response de si funcionó no haga nada
+
 let response ={
     msg:"",
     exito: false
@@ -14,7 +16,6 @@ let response ={
         apellido_p: req.body.apellido_p,
         apellido_m: req.body.apellido_m,
         telefono: req.body.telefono,
-        pass: req.body.pass,
         mail: req.body.mail,
         direccion: req.body.direccion
 
@@ -32,3 +33,6 @@ let response ={
         res.json(response)
      })
 }
+
+
+
